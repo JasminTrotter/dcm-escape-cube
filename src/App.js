@@ -12,7 +12,7 @@ import './styles/App.css';
 
 function App() {
   const [startGame, updateStartStatus] = useState(true);
-  const [startTimer, updateTimer] = useState(false);
+  const [startTimer, updateTimer] = useState(true);
   const [intro, updateIntroStatus] = useState(false);
   const [gameBoard, updateGameStatus] = useState(false);
   const [success, updateSuccessStatus] = useState(false);
