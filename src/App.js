@@ -7,7 +7,7 @@ import Success from './Success';
 import Timer from './Timer';
 import './styles/App.css';
 
-export default function App() {
+function App() {
   const [startGame, updateStartStatus] = useState(true);
   const [startTimer, updateTimer] = useState(false);
   const [intro, updateIntroStatus] = useState(false);
@@ -15,6 +15,7 @@ export default function App() {
   const [success, updateSuccessStatus] = useState(false);
   const [fail, updateFailStatus] = useState(false);
   const t = new Date();
+
   t.setSeconds(t.getSeconds() + 299.5);
 
   function handleFail() {
@@ -58,3 +59,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
