@@ -37,7 +37,6 @@ function GameBoard({
     }
   }, [questionMatchOne, questionMatchTwo]);
 
-  console.log(getInputClassName());
   function handleSubmit(param) {
 
     if (param === 'param1') {
@@ -58,6 +57,7 @@ function GameBoard({
       }
     }
 
+
     if (param === 'param3') {
       if (thirdUrlParam === product.marketingPartner) {
         updateQuestionMatchThree(true);
@@ -67,6 +67,7 @@ function GameBoard({
         updateInputError(true);
       }
     }
+
   }
 
   return (
