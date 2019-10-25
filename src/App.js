@@ -20,6 +20,7 @@ function App() {
   const [questionMatchOne, updateQuestionMatchOne] = useState(false);
   const [questionMatchTwo, updateQuestionMatchTwo] = useState(false);
   const [questionMatchThree, updateQuestionMatchThree] = useState(false);
+  const [inputError, updateInputError] = useState(false);
   const t = new Date();
 
   t.setSeconds(t.getSeconds() + 299.5);
@@ -60,6 +61,10 @@ function App() {
     updateTimer(false);
   }
 
+  function getInputClassName() {
+    return inputError ? 'input-error' : '';
+  }
+
   return (
     <div className='App'>
       {startTimer && <Timer expiryTimestamp={t} handleFail={handleFail} />}
@@ -67,6 +72,7 @@ function App() {
       {intro && <Introduction handleStartGame={handleStartGame} />}
       {gameBoard && <GameBoard
         firstUrlParam={firstUrlParam}
+        getInputClassName={getInputClassName}
         handleFail={handleFail}
         handleWin={handleWin}
         questionMatchOne={questionMatchOne}
@@ -80,6 +86,8 @@ function App() {
         updateQuestionMatchTwo={updateQuestionMatchTwo}
         updateSecondUrlParam={updateSecondUrlParam}
         updateThirdUrlParam={updateThirdUrlParam}
+        updateInputError={updateInputError}
+        inputError={inputError}
       />}
       {success && <Success
         firstUrlParam={firstUrlParam}
