@@ -37,6 +37,12 @@ function App() {
     updateStartStatus(true);
     updateSuccessStatus(false);
     updateFailStatus(false);
+    updateFirstUrlParam('');
+    updateSecondUrlParam('');
+    updateThirdUrlParam('');
+    updateQuestionMatchOne(false)
+    updateQuestionMatchTwo(false)
+    updateQuestionMatchThree(false)
     updateTimer(false);
   }
 
