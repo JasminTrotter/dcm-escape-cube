@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { useTimer } from "react-timer-hook";
 
 function Timer({ expiryTimestamp, handleFail }) {
-  const { seconds, minutes, start /*restart*/ } = useTimer({
+  const { seconds, minutes, start } = useTimer({
     expiryTimestamp,
     onExpire: () => {
-      console.warn("onExpire called");
       handleFail();
     }
   });
@@ -15,20 +15,16 @@ function Timer({ expiryTimestamp, handleFail }) {
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ fontSize: "100px" }}>
-        <span>{minutes}</span>:<span>{seconds}</span>
+        <span>{minutes}</span>:<span>{`${seconds < 10 ? 0 : ''}`}{seconds}</span>
       </div>
-      {/* <button
-        onClick={() => {
-          // Restarts to 5 minutes timer
-          var t = new Date();
-          t.setSeconds(t.getSeconds() + 300);
-          restart(t);
-        }}
-      >
-        restart
-      </button> */}
     </div>
   );
 }
+
+
+Timer.propTypes = {
+  handleFail: PropTypes.func,
+  expiryTimestamp: PropTypes.object
+};
 
 export default Timer;

@@ -1,85 +1,90 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { productList } from './productList';
 import './styles/App.css';
 
-function GameBoard({ handleWin, handleRestart }) {
-  const [name, updateName] = useState('');
-  const [price, updatePrice] = useState('');
-  const items = [
-    {
-      name: 'VaporMax',
-      price: '100',
-      hint: 'this is a hint'
-    },
-    {
-      name: 'Other',
-      price: '0',
-      hint: 'this is a hint'
+function GameBoard({ handleWin }) {
+  const [product] = useState(productList[Math.floor(Math.random() * productList.length)])
+  const [firstUrlParam, updateFirstUrlParam] = useState('');
+  const [secondUrlParam, updateSecondUrlParam] = useState('');
+  const [thirdUrlParam, updateThirdUrlParam] = useState('');
+  const [questionMatchOne, updateQuestionMatchOne] = useState(false);
+  const [questionMatchTwo, updateQuestionMatchTwo] = useState(false);
+  const [questionMatchThree, updateQuestionMatchThree] = useState(false);
+  const firstInput = useRef(null);
+  const secondInput = useRef(null);
+  const thirdInput = useRef(null);
+
+  useEffect(() => {
+    firstInput.current.focus();
+    if (questionMatchOne) {
+      secondInput.current.focus();
     }
-  ];
-  const [correctItemIndex] = useState(Math.floor(Math.random() * Math.floor(items.length)))
-  console.log('correctItemIndex', correctItemIndex);
+    if (questionMatchTwo) {
+      thirdInput.current.focus();
+    }
+  }, [questionMatchOne, questionMatchTwo]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const correctItem = items[correctItemIndex];
-
-    if (name) {
-      if (name === correctItem.name) {
-        console.log('correct answer');
-      } else {
-        console.log('wrong answer');
-      }
+  function handleSubmit(param) {
+    if (param === 'param1' && firstUrlParam === product.name) {
+      updateQuestionMatchOne(true);
     }
 
-    if (price) {
-      if (price === correctItem.price) {
-        console.log('correct answer');
-      } else {
-        console.log('wrong answer');
-      }
+    if (param === 'param2' && secondUrlParam === product.random) {
+      updateQuestionMatchTwo(true);
     }
 
-    if (name === correctItem.name && price === correctItem.price) {
+    if (param === 'param3' && thirdUrlParam === product.marketingPartner) {
+      updateQuestionMatchThree(true);
       handleWin();
     }
-
   }
-
-
-  console.log('name', name, 'price', price);
-
 
   return (
     <div className='game-board'>
-      <h1>Game Board</h1>
-
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          Param1:
-          <input type='text' value={name} onChange={e => updateName(e.target.value)} />
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          Param2:
-          <input type='text' value={price} onChange={e => updatePrice(e.target.value)} />
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
-
-      <button onClick={handleWin}>Win</button>
-      <button onClick={handleRestart}>Restart Game</button>
+      <h3>https://marketerz.com/event?a=an%{questionMatchOne ? firstUrlParam : '___________'}&v={questionMatchTwo ? secondUrlParam : '___________'}&resp={questionMatchThree ? thirdUrlParam : '___________'}&pr=y</h3>
+      <div className={!questionMatchOne ? 'show-form' : 'hide-form'}>
+        <h1>Hint/Answer = {product.name}</h1>
+        <form className='show-form' onSubmit={event => {
+          handleSubmit('param1')
+          event.preventDefault();
+        }}>
+          <label>
+            1:
+            <input type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
+          </label>
+        </form>
+      </div>
+      <div className={(questionMatchOne && !questionMatchTwo) ? 'show-form' : 'hide-form'}>
+        <h1>Hint/Answer = {product.random}</h1>
+        <form onSubmit={event => {
+          handleSubmit('param2')
+          event.preventDefault();
+        }}>
+          <label>
+            2:
+            <input type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
+          </label>
+        </form>
+      </div>
+      <div className={questionMatchTwo ? 'show-form' : 'hide-form'}>
+        <h1>Hint/Answer = {product.marketingPartner}</h1>
+        <form className='show-form' onSubmit={event => {
+          handleSubmit('param3')
+          event.preventDefault();
+        }}>
+          <label>
+            3:
+            <input type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
+          </label>
+        </form>
+      </div>
     </div>
   );
 }
 
 GameBoard.propTypes = {
-  handleWin: PropTypes.func,
-  handleFail: PropTypes.func
+  handleWin: PropTypes.func
 };
 
 export default GameBoard;
