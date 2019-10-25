@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from "styled-components";
-import { themes } from "react95";
-import * as image from './img/blue-tubes.JPG'
 import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Introduction from './Introduction';
@@ -69,61 +66,40 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={themes.default}>
-      <div className='App'
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          height: `100vh`
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            height: `100%`,
-            width: `100%`,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexFlow: 'column nowrap'
-          }}
-        >
-          {startTimer && <Timer expiryTimestamp={t} handleFail={handleFail} />}
-          {startGame && <Start handleStartIntro={handleStartIntro} />}
-          {intro && <Introduction handleStartGame={handleStartGame} />}
-          {gameBoard && <GameBoard
-            firstUrlParam={firstUrlParam}
-            getInputClassName={getInputClassName}
-            handleFail={handleFail}
-            handleWin={handleWin}
-            questionMatchOne={questionMatchOne}
-            questionMatchThree={questionMatchThree}
-            questionMatchTwo={questionMatchTwo}
-            secondUrlParam={secondUrlParam}
-            thirdUrlParam={thirdUrlParam}
-            updateFirstUrlParam={updateFirstUrlParam}
-            updateQuestionMatchOne={updateQuestionMatchOne}
-            updateQuestionMatchThree={updateQuestionMatchThree}
-            updateQuestionMatchTwo={updateQuestionMatchTwo}
-            updateSecondUrlParam={updateSecondUrlParam}
-            updateThirdUrlParam={updateThirdUrlParam}
-            updateInputError={updateInputError}
-            inputError={inputError}
-          />}
-          {success && <Success
-            firstUrlParam={firstUrlParam}
-            questionMatchThree={questionMatchThree}
-            questionMatchTwo={questionMatchTwo}
-            secondUrlParam={secondUrlParam}
-            thirdUrlParam={thirdUrlParam}
-            handleRestart={handleRestart}
-            questionMatchOne={questionMatchOne}
-          />}
-          {fail && <Failure handleRestart={handleRestart} />}
-
-        </div>
-      </div>
-    </ThemeProvider>
+    <div className='App'>
+      {startTimer && <Timer expiryTimestamp={t} handleFail={handleFail} />}
+      {startGame && <Start handleStartIntro={handleStartIntro} />}
+      {intro && <Introduction handleStartGame={handleStartGame} />}
+      {gameBoard && <GameBoard
+        firstUrlParam={firstUrlParam}
+        getInputClassName={getInputClassName}
+        handleFail={handleFail}
+        handleWin={handleWin}
+        questionMatchOne={questionMatchOne}
+        questionMatchThree={questionMatchThree}
+        questionMatchTwo={questionMatchTwo}
+        secondUrlParam={secondUrlParam}
+        thirdUrlParam={thirdUrlParam}
+        updateFirstUrlParam={updateFirstUrlParam}
+        updateQuestionMatchOne={updateQuestionMatchOne}
+        updateQuestionMatchThree={updateQuestionMatchThree}
+        updateQuestionMatchTwo={updateQuestionMatchTwo}
+        updateSecondUrlParam={updateSecondUrlParam}
+        updateThirdUrlParam={updateThirdUrlParam}
+        updateInputError={updateInputError}
+        inputError={inputError}
+      />}
+      {success && <Success
+        firstUrlParam={firstUrlParam}
+        questionMatchThree={questionMatchThree}
+        questionMatchTwo={questionMatchTwo}
+        secondUrlParam={secondUrlParam}
+        thirdUrlParam={thirdUrlParam}
+        handleRestart={handleRestart}
+        questionMatchOne={questionMatchOne}
+      />}
+      {fail && <Failure handleRestart={handleRestart} />}
+    </div>
   );
 }
 
