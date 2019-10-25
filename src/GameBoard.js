@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { productList } from './productList';
 import './styles/App.css';
+import './styles/GameBoard.css';
 import Url from './Url';
 
 function GameBoard({
@@ -18,6 +19,8 @@ function GameBoard({
   updateQuestionMatchTwo,
   updateSecondUrlParam,
   updateThirdUrlParam,
+  updateInputError,
+  getInputClassName
 }) {
   const [product] = useState(productList[Math.floor(Math.random() * productList.length)])
   const firstInput = useRef(null);
@@ -34,18 +37,35 @@ function GameBoard({
     }
   }, [questionMatchOne, questionMatchTwo]);
 
+  console.log(getInputClassName());
   function handleSubmit(param) {
-    if (param === 'param1' && firstUrlParam === product.name) {
-      updateQuestionMatchOne(true);
+
+    if (param === 'param1') {
+      if (firstUrlParam === product.name) {
+        updateQuestionMatchOne(true);
+        updateInputError(false);
+      } else {
+        updateInputError(true);
+      }
     }
 
-    if (param === 'param2' && secondUrlParam === product.random) {
-      updateQuestionMatchTwo(true);
+    if (param === 'param2') {
+      if (secondUrlParam === product.random) {
+        updateQuestionMatchTwo(true);
+        updateInputError(false);
+      } else {
+        updateInputError(true);
+      }
     }
 
-    if (param === 'param3' && thirdUrlParam === product.marketingPartner) {
-      updateQuestionMatchThree(true);
-      handleWin();
+    if (param === 'param3') {
+      if (thirdUrlParam === product.marketingPartner) {
+        updateQuestionMatchThree(true);
+        updateInputError(false);
+        handleWin();
+      } else {
+        updateInputError(true);
+      }
     }
   }
 
@@ -68,7 +88,7 @@ function GameBoard({
         }}>
           <label>
             1:
-            <input type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
+            <input className={getInputClassName()} type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
@@ -80,7 +100,7 @@ function GameBoard({
         }}>
           <label>
             2:
-            <input type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
+            <input className={getInputClassName()} type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
@@ -92,7 +112,7 @@ function GameBoard({
         }}>
           <label>
             3:
-            <input type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
+            <input className={getInputClassName()} type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
