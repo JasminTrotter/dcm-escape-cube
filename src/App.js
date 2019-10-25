@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { themes } from "react95";
-import * as image from './img/blue-tubes.JPG'
+import * as backgroundImage from './img/blue-tubes.JPG'
 import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Introduction from './Introduction';
@@ -67,7 +67,7 @@ function App() {
     <ThemeProvider theme={themes.default}>
       <div className='App'
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           height: `100vh`

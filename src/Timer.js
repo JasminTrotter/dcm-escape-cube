@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { AppBar, Button, Hourglass, Toolbar } from "react95";
-import { Icon } from 'react95';
+import * as image from './img/react95Logo.png';
 import { useTimer } from "react-timer-hook";
 
 function Timer({ expiryTimestamp, handleFail }) {
@@ -13,7 +13,6 @@ function Timer({ expiryTimestamp, handleFail }) {
   });
 
   start();
-
   return (
     <AppBar
       style={{
@@ -22,14 +21,25 @@ function Timer({ expiryTimestamp, handleFail }) {
         bottom: 0
       }}
     >
-      <Toolbar>
+      <Toolbar
+        style={{
+         display: 'flex',
+         justifyContent: 'space-between'
+        }}
+      >
         <Button style={{ fontWeight: 'bold' }}>
-          <Icon style={{ marginLeft: -2, marginRight: 4 }} />
+         <img style={{
+           height: 20,
+           marginRight: 2
+         }}
+         alt='logo'
+         src={image}
+         />
           Start
         </Button>
         <div style={{ fontSize: 40, display: 'flex', alignItems: 'center' }}>
           <span>{minutes}</span>:<span>{`${seconds < 10 ? 0 : ''}`}{seconds}</span>
-          <Hourglass size={32} />
+          <Hourglass size={30} />
         </div>
       </Toolbar>
     </AppBar>
