@@ -8,7 +8,7 @@ import GameBoard from './GameBoard';
 import Introduction from './Introduction';
 import Start from './Start';
 import Success from './Success';
-import TimerToolbar from './TimerToolbar';
+import BottomNav from './BottomNav';
 import './styles/App.css';
 
 function App() {
@@ -85,12 +85,20 @@ function App() {
             width: `100%`,
             justifyContent: 'center',
             alignItems: 'center',
-            flexFlow: 'column nowrap'
+            flexFlow: 'column nowrap',
           }}
         >
-          {startTimer && <TimerToolbar expiryTimestamp={t} handleFail={handleFail} handleStartIntro={handleStartIntro} />}
-          {startGame && <Start handleStartIntro={handleStartIntro} />}
-          {intro && <Introduction handleStartGame={handleStartGame} />}
+          {startTimer && <BottomNav
+            expiryTimestamp={t}
+            gameBoard={gameBoard}
+            handleFail={handleFail}
+            handleStartGame={handleStartGame}
+            handleStartIntro={handleStartIntro}
+            intro={intro}
+            startGame={startGame}
+          />}
+          {startGame && <Start />}
+          {intro && <Introduction />}
           {gameBoard && <GameBoard
             firstUrlParam={firstUrlParam}
             getInputClassName={getInputClassName}
