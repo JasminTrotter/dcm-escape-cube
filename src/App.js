@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { themes } from "react95";
-import * as image from './img/blue-tubes.JPG'
+import * as backgroundImage from './img/blue-tubes.JPG'
 import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Introduction from './Introduction';
@@ -12,7 +12,7 @@ import './styles/App.css';
 
 function App() {
   const [startGame, updateStartStatus] = useState(true);
-  const [startTimer, updateTimer] = useState(false);
+  const [startTimer, updateTimer] = useState(true);
   const [intro, updateIntroStatus] = useState(false);
   const [gameBoard, updateGameStatus] = useState(false);
   const [success, updateSuccessStatus] = useState(false);
@@ -72,7 +72,7 @@ function App() {
     <ThemeProvider theme={themes.default}>
       <div className='App'
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           height: `100vh`
