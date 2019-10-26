@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { themes } from "react95";
-import * as backgroundImage from './img/blue-tubes.JPG'
 import { productList } from './productList';
-import Logo from './Logo';
+import VideoOne from './VideoOne';
 import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Introduction from './Introduction';
 import Start from './Start';
 import Success from './Success';
-import Timer from './Timer';
+import TimerToolbar from './TimerToolbar';
 import './styles/App.css';
 
 function App() {
@@ -75,14 +74,10 @@ function App() {
 
   return (
     <ThemeProvider theme={themes.default}>
-      <div className='App'
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          height: `100vh`
-        }}
-      >
+      <div className='App'>
+        <div className="video-div">
+          <VideoOne />
+        </div>
         <div
           style={{
             display: 'flex',
@@ -93,8 +88,7 @@ function App() {
             flexFlow: 'column nowrap'
           }}
         >
-          <Logo />
-          {startTimer && <Timer expiryTimestamp={t} handleFail={handleFail} />}
+          {startTimer && <TimerToolbar expiryTimestamp={t} handleFail={handleFail} handleStartIntro={handleStartIntro} />}
           {startGame && <Start handleStartIntro={handleStartIntro} />}
           {intro && <Introduction handleStartGame={handleStartGame} />}
           {gameBoard && <GameBoard
@@ -127,7 +121,6 @@ function App() {
             thirdUrlParam={thirdUrlParam}
           />}
           {fail && <Failure handleRestart={handleRestart} />}
-
         </div>
       </div>
     </ThemeProvider>

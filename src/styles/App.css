@@ -1,6 +1,7 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  height: 100vh;
 }
 
 body {
@@ -15,4 +16,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.video-div {
+  height: 100%;
+  width: 100%;
+  float: left;
+  top: 0;
+  padding: none;
+  position: fixed;
 }

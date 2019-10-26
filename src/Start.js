@@ -1,18 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Logo from './Logo';
 import "./styles/App.css";
 
-function Start({ handleStartIntro }) {
+function Start() {
   return (
     <div className="start">
-      <h1>Welcome To The Escape Room</h1>
-      <button onClick={handleStartIntro}>Start Game</button>
+      <Logo />
     </div>
   );
 }
-
-Start.propTypes = {
-  handleStartIntro: PropTypes.func
-};
 
 export default Start;
