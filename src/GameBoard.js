@@ -1,28 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { productList } from './productList';
-import './styles/App.css';
 import './styles/GameBoard.css';
 import Url from './Url';
 
 function GameBoard({
   firstUrlParam,
+  getInputClassName,
   handleWin,
+  product,
   questionMatchOne,
   questionMatchThree,
   questionMatchTwo,
   secondUrlParam,
   thirdUrlParam,
   updateFirstUrlParam,
+  updateInputError,
   updateQuestionMatchOne,
   updateQuestionMatchThree,
   updateQuestionMatchTwo,
   updateSecondUrlParam,
   updateThirdUrlParam,
-  updateInputError,
-  getInputClassName
 }) {
-  const [product] = useState(productList[Math.floor(Math.random() * productList.length)])
   const firstInput = useRef(null);
   const secondInput = useRef(null);
   const thirdInput = useRef(null);
@@ -73,11 +71,11 @@ function GameBoard({
   return (
     <div className='game-board'>
       <Url
-        questionMatchOne={questionMatchOne}
         firstUrlParam={firstUrlParam}
+        questionMatchOne={questionMatchOne}
+        questionMatchThree={questionMatchThree}
         questionMatchTwo={questionMatchTwo}
         secondUrlParam={secondUrlParam}
-        questionMatchThree={questionMatchThree}
         thirdUrlParam={thirdUrlParam}
       />
 
@@ -122,7 +120,22 @@ function GameBoard({
 }
 
 GameBoard.propTypes = {
-  handleWin: PropTypes.func
+  firstUrlParam: PropTypes.string,
+  getInputClassName: PropTypes.string,
+  handleWin: PropTypes.func,
+  product: PropTypes.object,
+  questionMatchOne: PropTypes.bool,
+  questionMatchThree: PropTypes.bool,
+  questionMatchTwo: PropTypes.bool,
+  secondUrlParam: PropTypes.string,
+  thirdUrlParam: PropTypes.string,
+  updateFirstUrlParam: PropTypes.func,
+  updateInputError: PropTypes.func,
+  updateQuestionMatchOne: PropTypes.func,
+  updateQuestionMatchThree: PropTypes.func,
+  updateQuestionMatchTwo: PropTypes.func,
+  updateSecondUrlParam: PropTypes.func,
+  updateThirdUrlParam: PropTypes.func
 };
 
 export default GameBoard;

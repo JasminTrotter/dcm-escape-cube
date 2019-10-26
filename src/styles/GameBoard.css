@@ -1,3 +1,11 @@
 .input-error {
   border: 2px red solid;
 }
+
+.show-form {
+  display: block;
+}
+
+.hide-form {
+  display: none
+}
