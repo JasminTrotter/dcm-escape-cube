@@ -3,14 +3,15 @@ import Icon from "./svg/EscapeFromDcmLogo";
 import "./styles/Logo.css"
 
 function Logo() {
-  const width = 300;
-  const fillTop = '#fa2';
+  const width = 800;
+  const height = width / 2;
+  const colorTop = '#ff00aa';
+  const colorShadow = '#03fcdf';
 
   return (
     <div className="logo-div">
-      <div className="logo-top">
-        <Icon width={width} fill={fillTop} />
-      </div>
+      <Icon className="logo-top" width={width} height={height} fill={colorTop} />
+      <Icon className="logo-shadow" width={width} height={height} fill={colorShadow} />
     </div>
   );
 }

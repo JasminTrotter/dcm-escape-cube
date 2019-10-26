@@ -4,13 +4,14 @@ const SVG = ({
   style = {},
   fill = '#000',
   width = '100%',
+  height = '100%',
   className = '',
   viewBox = '0 0 103.83 54.92'
 }) => (
     <svg
       width={width}
       style={style}
-      height={width}
+      height={height}
       viewBox={viewBox}
       xmlns='http://www.w3.org/2000/svg'
       className={`svg-icon ${className || ''}`}

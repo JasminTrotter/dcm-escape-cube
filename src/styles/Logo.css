@@ -1,0 +1,14 @@
+.logo-div {
+  position: relative;
+}
+
+.logo-top {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-shadow {
+  position: absolute;
+  top: 2px;
+  left: -2px;
+}
