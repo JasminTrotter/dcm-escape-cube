@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Url from './Url';
-import './styles/GameBoard.css';
+import '../styles/GameBoard.css';
 
 function GameBoard({
   firstUrlParam,

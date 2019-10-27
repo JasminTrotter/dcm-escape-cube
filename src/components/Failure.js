@@ -1,7 +1,7 @@
 import React from "react";
-import "./styles/App.css";
+import "../styles/Failure.css";
 
-function Failure({ handleRestart }) {
+function Failure() {
   return (
     <div className="failure">
       <h1>Failure</h1>

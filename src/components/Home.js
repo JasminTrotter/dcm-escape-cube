@@ -1,13 +1,12 @@
 import React from "react";
 import Logo from './Logo';
-import "./styles/App.css";
 
-function Start() {
+function Home() {
   return (
-    <div className="start">
+    <div>
       <Logo />
     </div>
   );
 }
 
-export default Start;
+export default Home;

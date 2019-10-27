@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Timer from './Timer';
 import { AppBar, Button, Toolbar } from "react95";
-import * as image from './img/react95Logo.png';
+import * as image from '../img/react95Logo.png';
 
 function BottomNav({
   expiryTimestamp,
@@ -36,6 +36,7 @@ function BottomNav({
         {startGame && <Button style={{ fontWeight: 'bold' }} onClick={handleStartIntro}>
           <img style={{
             height: 20,
+            marginRight: 2
           }}
             alt='logo'
             src={image}
@@ -45,6 +46,7 @@ function BottomNav({
         {intro && <Button style={{ fontWeight: 'bold' }} onClick={handleStartGame}>
           <img style={{
             height: 20,
+            marginRight: 2
           }}
             alt='logo'
             src={image}
@@ -56,7 +58,7 @@ function BottomNav({
             {!questionMatchOne && <Button style={{ fontWeight: 'bold' }} onClick={handleStartGame}>
               <img style={{
                 height: 20,
-
+                marginRight: 2
               }}
                 alt='logo'
                 src={image}
@@ -66,7 +68,7 @@ function BottomNav({
             {(questionMatchOne && !questionMatchTwo) && <Button style={{ fontWeight: 'bold' }} onClick={handleStartGame}>
               <img style={{
                 height: 20,
-
+                marginRight: 2
               }}
                 alt='logo'
                 src={image}
@@ -76,7 +78,7 @@ function BottomNav({
             {questionMatchTwo && <Button style={{ fontWeight: 'bold' }} onClick={handleStartGame}>
               <img style={{
                 height: 20,
-
+                marginRight: 2
               }}
                 alt='logo'
                 src={image}
@@ -92,6 +94,7 @@ function BottomNav({
         {(success || fail) && <Button style={{ fontWeight: 'bold' }} onClick={handleRestart}>
           <img style={{
             height: 20,
+            marginRight: 2
           }}
             alt='logo'
             src={image}

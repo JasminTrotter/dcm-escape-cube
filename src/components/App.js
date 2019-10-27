@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { themes } from "react95";
-import { productList } from './productList';
-import VideoOne from './VideoOne';
+import { productList } from '../productList';
+import BackgroundVideo from './BackgroundVideo';
+import BottomNav from './BottomNav';
 import Failure from './Failure';
 import GameBoard from './GameBoard';
+import Home from './Home';
 import Introduction from './Introduction';
-import Start from './Start';
 import Success from './Success';
-import BottomNav from './BottomNav';
-import './styles/App.css';
+import '../styles/App.css';
 
 function App() {
   const newProduct = productList[Math.floor(Math.random() * productList.length)]
+  const t = new Date();
   const [fail, updateFailStatus] = useState(false);
   const [firstUrlParam, updateFirstUrlParam] = useState('');
   const [gameBoard, updateGameStatus] = useState(false);
@@ -26,9 +27,10 @@ function App() {
   const [startGame, updateStartStatus] = useState(true);
   const [success, updateSuccessStatus] = useState(false);
   const [thirdUrlParam, updateThirdUrlParam] = useState('');
-  const t = new Date();
 
-  t.setSeconds(t.getSeconds() + 299.5);
+  // t.setSeconds(t.getSeconds() + 299.5); // 5 min
+  t.setSeconds(t.getSeconds() + 180); // 3 min
+  // t.setSeconds(t.getSeconds() + 3); // 3 sec
 
   function handleFail() {
     updateGameStatus(false);
@@ -71,18 +73,17 @@ function App() {
     <ThemeProvider theme={themes.default}>
       <div className='App'>
         <div className="video-div">
-          <VideoOne />
+          <BackgroundVideo
+            fail={fail}
+            gameBoard={gameBoard}
+            intro={intro}
+            questionMatchOne={questionMatchOne}
+            questionMatchTwo={questionMatchTwo}
+            startGame={startGame}
+            success={success}
+          />
         </div>
-        <div
-          style={{
-            display: 'flex',
-            height: `100%`,
-            width: `100%`,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexFlow: 'column nowrap',
-          }}
-        >
+        <div className='game'>
           <BottomNav
             expiryTimestamp={t}
             fail={fail}
@@ -97,7 +98,7 @@ function App() {
             startGame={startGame}
             success={success}
           />
-          {startGame && <Start />}
+          {startGame && <Home />}
           {intro && <Introduction />}
           {gameBoard && <GameBoard
             firstUrlParam={firstUrlParam}

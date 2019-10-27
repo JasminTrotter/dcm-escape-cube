@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./styles/Success.css";
 import Url from './Url';
+import "../styles/Success.css";
 
 function Success({
   firstUrlParam,
@@ -9,18 +9,19 @@ function Success({
   questionMatchThree,
   questionMatchTwo,
   secondUrlParam,
-  thirdUrlParam
+  thirdUrlParam,
 }) {
   return (
     <div className="success">
       <h1>Success!</h1>
       <Url
-        questionMatchOne={questionMatchOne}
         firstUrlParam={firstUrlParam}
+        questionMatchOne={questionMatchOne}
+        questionMatchThree={questionMatchThree}
         questionMatchTwo={questionMatchTwo}
         secondUrlParam={secondUrlParam}
-        questionMatchThree={questionMatchThree}
-        thirdUrlParam={thirdUrlParam} />
+        thirdUrlParam={thirdUrlParam}
+      />
     </div>
   );
 }
@@ -31,7 +32,7 @@ Success.propTypes = {
   questionMatchThree: PropTypes.bool,
   questionMatchTwo: PropTypes.bool,
   secondUrlParam: PropTypes.string,
-  thirdUrlParam: PropTypes.string
+  thirdUrlParam: PropTypes.string,
 };
 
 export default Success;

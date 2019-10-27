@@ -1,6 +1,6 @@
 import React from 'react'
-import Icon from "./svg/EscapeFromDcmLogo";
-import "./styles/Logo.css"
+import Icon from "../svg/EscapeFromDcmLogo";
+import "../styles/Logo.css"
 
 function Logo() {
   const width = 800;
