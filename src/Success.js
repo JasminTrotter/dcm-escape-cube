@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./styles/App.css";
+import "./styles/Success.css";
 import Url from './Url';
 
 function Success({
   firstUrlParam,
-  handleRestart,
   questionMatchOne,
   questionMatchThree,
   questionMatchTwo,
@@ -22,14 +21,12 @@ function Success({
         secondUrlParam={secondUrlParam}
         questionMatchThree={questionMatchThree}
         thirdUrlParam={thirdUrlParam} />
-      <button onClick={handleRestart}>Restart Game</button>
     </div>
   );
 }
 
 Success.propTypes = {
   firstUrlParam: PropTypes.string,
-  handleRestart: PropTypes.func,
   questionMatchOne: PropTypes.bool,
   questionMatchThree: PropTypes.bool,
   questionMatchTwo: PropTypes.bool,

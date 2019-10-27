@@ -24,7 +24,6 @@ function App() {
   const [questionMatchTwo, updateQuestionMatchTwo] = useState(false);
   const [secondUrlParam, updateSecondUrlParam] = useState('');
   const [startGame, updateStartStatus] = useState(true);
-  const [startTimer, updateTimer] = useState(true);
   const [success, updateSuccessStatus] = useState(false);
   const [thirdUrlParam, updateThirdUrlParam] = useState('');
   const t = new Date();
@@ -34,7 +33,6 @@ function App() {
   function handleFail() {
     updateGameStatus(false);
     updateFailStatus(true);
-    updateTimer(false);
   }
 
   function handleRestart() {
@@ -48,13 +46,11 @@ function App() {
     updateStartStatus(true);
     updateSuccessStatus(false);
     updateThirdUrlParam('');
-    updateTimer(false);
   }
 
   function handleStartGame() {
     updateGameStatus(true);
     updateIntroStatus(false);
-    updateTimer(true);
   }
 
   function handleStartIntro() {
@@ -65,7 +61,6 @@ function App() {
   function handleWin() {
     updateGameStatus(false);
     updateSuccessStatus(true);
-    updateTimer(false);
   }
 
   function getInputClassName() {
@@ -88,15 +83,20 @@ function App() {
             flexFlow: 'column nowrap',
           }}
         >
-          {startTimer && <BottomNav
+          <BottomNav
             expiryTimestamp={t}
+            fail={fail}
             gameBoard={gameBoard}
             handleFail={handleFail}
+            handleRestart={handleRestart}
             handleStartGame={handleStartGame}
             handleStartIntro={handleStartIntro}
             intro={intro}
+            questionMatchOne={questionMatchOne}
+            questionMatchTwo={questionMatchTwo}
             startGame={startGame}
-          />}
+            success={success}
+          />
           {startGame && <Start />}
           {intro && <Introduction />}
           {gameBoard && <GameBoard
@@ -121,7 +121,6 @@ function App() {
           />}
           {success && <Success
             firstUrlParam={firstUrlParam}
-            handleRestart={handleRestart}
             questionMatchOne={questionMatchOne}
             questionMatchThree={questionMatchThree}
             questionMatchTwo={questionMatchTwo}
