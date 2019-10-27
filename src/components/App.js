@@ -8,6 +8,7 @@ import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Home from './Home';
 import Introduction from './Introduction';
+import Logo from './Logo';
 import Success from './Success';
 import '../styles/App.css';
 
@@ -98,6 +99,15 @@ function App() {
             startGame={startGame}
             success={success}
           />
+          {(!startGame && !success) &&
+            <div className='small-logo-div'>
+              <Logo
+                bottomColor={'#ffffff'}
+                size={150}
+                topColor={'#03a9fc'}
+              />
+            </div>
+          }
           {startGame && <Home />}
           {intro && <Introduction />}
           {gameBoard && <GameBoard

@@ -24,6 +24,12 @@ code {
     monospace;
 }
 
+.small-logo-div {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
 .game {
   display: flex;
   height: 100%;
