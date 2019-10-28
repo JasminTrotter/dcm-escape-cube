@@ -50,9 +50,9 @@ function GameBoard({
   ]);
 
   function handleSubmit(param) {
-    const firstAnswer = firstUrlParam.toLowerCase()
-    const secondAnswer = secondUrlParam.toLowerCase()
-    const thirdAnswer = thirdUrlParam.toLowerCase()
+    const firstAnswer = firstUrlParam.toLowerCase();
+    const secondAnswer = secondUrlParam.toLowerCase();
+    const thirdAnswer = thirdUrlParam.toLowerCase();
 
     if (param === 'param1') {
       if (firstAnswer === product.name) {

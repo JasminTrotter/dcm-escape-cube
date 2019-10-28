@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const FormInput = ({ handleSubmit, inputRef, paramNumber, urlParam, updateUrlFunction}) => (
   <form  onSubmit={event => {
     handleSubmit(`param${paramNumber}`)
