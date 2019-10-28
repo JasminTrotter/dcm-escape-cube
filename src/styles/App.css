@@ -1,6 +1,11 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  height: 100vh;
+}
+
+h1, h3 {
+  color: #ffffff;
 }
 
 body {
@@ -17,10 +22,26 @@ code {
     monospace;
 }
 
-.show-form {
-  display: block;
+.small-logo-div {
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }
 
-.hide-form {
-  display: none
+.game {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.video-div {
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 }
