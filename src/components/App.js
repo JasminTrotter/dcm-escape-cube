@@ -31,8 +31,8 @@ function App() {
   const [thirdUrlParam, updateThirdUrlParam] = useState('');
 
   // t.setSeconds(t.getSeconds() + 299.5); // 5 min
-  t.setSeconds(t.getSeconds() + 180); // 3 min
-  // t.setSeconds(t.getSeconds() + 3); // 3 sec
+  // t.setSeconds(t.getSeconds() + 180); // 3 min
+  t.setSeconds(t.getSeconds() + 3); // 3 sec
 
   function handleFail() {
     updateGameStatus(false);
@@ -101,7 +101,7 @@ function App() {
             <div className='small-logo-div'>
               <Logo
                 bottomColor={'#ffffff'}
-                size={150}
+                size={125}
                 topColor={'#03a9fc'}
               />
             </div>
