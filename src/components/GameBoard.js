@@ -44,9 +44,12 @@ function GameBoard({
   ]);
 
   function handleSubmit(param) {
+    const firstAnswer = firstUrlParam.toLowerCase()
+    const secondAnswer = secondUrlParam.toLowerCase()
+    const thirdAnswer = thirdUrlParam.toLowerCase()
 
     if (param === 'param1') {
-      if (firstUrlParam === product.name) {
+      if (firstAnswer === product.name) {
         updateQuestionMatchOne(true);
         updateInputError(false);
       } else {
@@ -55,7 +58,7 @@ function GameBoard({
     }
 
     if (param === 'param2') {
-      if (secondUrlParam === product.random) {
+      if (secondAnswer === product.random) {
         updateQuestionMatchTwo(true);
         updateInputError(false);
       } else {
@@ -65,7 +68,7 @@ function GameBoard({
 
 
     if (param === 'param3') {
-      if (thirdUrlParam === product.marketingPartner) {
+      if (thirdAnswer === product.marketingPartner) {
         updateQuestionMatchThree(true);
         updateInputError(false);
         handleWin();
@@ -88,37 +91,37 @@ function GameBoard({
       />
 
       <div className={!questionMatchOne ? 'show-form' : 'hide-form'}>
-        <h1>Hint/Answer = {product.name}</h1>
+        <h1>1. {product.hint1}</h1>
+        <h3>(answer: {product.name})</h3>
         <form className='show-form' onSubmit={event => {
           handleSubmit('param1')
           event.preventDefault();
         }}>
           <label>
-            1:
             <input type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
       <div className={(questionMatchOne && !questionMatchTwo) ? 'show-form' : 'hide-form'}>
-        <h1>Hint/Answer = {product.random}</h1>
+        <h1>2. {product.hint2}</h1>
+        <h3>(answer: {product.random})</h3>
         <form onSubmit={event => {
           handleSubmit('param2')
           event.preventDefault();
         }}>
           <label>
-            2:
             <input type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
       <div className={questionMatchTwo ? 'show-form' : 'hide-form'}>
-        <h1>Hint/Answer = {product.marketingPartner}</h1>
+        <h1>3. {product.hint3}</h1>
+        <h3>(answer: {product.marketingPartner})</h3>
         <form className='show-form' onSubmit={event => {
           handleSubmit('param3')
           event.preventDefault();
         }}>
           <label>
-            3:
             <input type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
           </label>
         </form>

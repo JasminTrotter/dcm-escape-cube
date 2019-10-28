@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Logo from './Logo';
 import Timer from './Timer';
 import { AppBar, Button, Toolbar } from "react95";
 import * as image from '../img/react95Logo.png';
@@ -85,6 +86,11 @@ function BottomNav({
               />
               Hint 3
             </Button>}
+            <Logo
+              bottomColor={'#ffffff'}
+              size={100}
+              topColor={'#000000'}
+            />
             <Timer
               expiryTimestamp={expiryTimestamp}
               handleFail={handleFail}
