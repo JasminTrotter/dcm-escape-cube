@@ -1,4 +1,5 @@
 import React from 'react';
+import UrlContainer from './UrlContainer';
 import PropTypes from 'prop-types';
 
 function Url({
@@ -14,8 +15,10 @@ function Url({
     return input.replace(/\s+/g, '').toLowerCase()
   }
 
+  const url = `https://marketerz.com/event?a=an%${questionMatchOne ? handleFormatInput(firstUrlParam) : '___________'}&v=${questionMatchTwo ? handleFormatInput(secondUrlParam) : '___________'}&resp=${questionMatchThree ? handleFormatInput(thirdUrlParam) : '___________'}&pr=y`;
+
   return (
-    <h3>https://marketerz.com/event?a=an%{questionMatchOne ? handleFormatInput(firstUrlParam) : '___________'}&v={questionMatchTwo ? handleFormatInput(secondUrlParam) : '___________'}&resp={questionMatchThree ? handleFormatInput(thirdUrlParam) : '___________'}&pr=y</h3>
+    <UrlContainer url={url}/>
   );
 }
 
