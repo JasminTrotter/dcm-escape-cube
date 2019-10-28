@@ -4,6 +4,7 @@ import { themes } from "react95";
 import { productList } from '../productList';
 import BackgroundVideo from './BackgroundVideo';
 import BottomNav from './BottomNav';
+import ErrorBox from './ErrorBox';
 import Failure from './Failure';
 import GameBoard from './GameBoard';
 import Home from './Home';
@@ -66,10 +67,6 @@ function App() {
     updateSuccessStatus(true);
   }
 
-  function getInputClassName() {
-    return inputError ? 'input-error' : '';
-  }
-
   return (
     <ThemeProvider theme={themes.default}>
       <div className='App'>
@@ -85,6 +82,7 @@ function App() {
           />
         </div>
         <div className='game'>
+          {inputError && <ErrorBox inputError={inputError} />}
           <BottomNav
             expiryTimestamp={t}
             fail={fail}
@@ -112,7 +110,6 @@ function App() {
           {intro && <Introduction />}
           {gameBoard && <GameBoard
             firstUrlParam={firstUrlParam}
-            getInputClassName={getInputClassName}
             handleFail={handleFail}
             handleWin={handleWin}
             inputError={inputError}

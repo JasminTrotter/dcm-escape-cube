@@ -5,8 +5,8 @@ import '../styles/GameBoard.css';
 
 function GameBoard({
   firstUrlParam,
-  getInputClassName,
   handleWin,
+  inputError,
   product,
   questionMatchOne,
   questionMatchThree,
@@ -27,13 +27,21 @@ function GameBoard({
 
   useEffect(() => {
     firstInput.current.focus();
+    if (inputError) {
+      setTimeout(function () { updateInputError(false); }, 500);
+    }
     if (questionMatchOne) {
       secondInput.current.focus();
     }
     if (questionMatchTwo) {
       thirdInput.current.focus();
     }
-  }, [questionMatchOne, questionMatchTwo]);
+  }, [
+    inputError,
+    questionMatchOne,
+    questionMatchTwo,
+    updateInputError,
+  ]);
 
   function handleSubmit(param) {
 
@@ -87,7 +95,7 @@ function GameBoard({
         }}>
           <label>
             1:
-            <input className={getInputClassName()} type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
+            <input type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
@@ -99,7 +107,7 @@ function GameBoard({
         }}>
           <label>
             2:
-            <input className={getInputClassName()} type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
+            <input type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
@@ -111,7 +119,7 @@ function GameBoard({
         }}>
           <label>
             3:
-            <input className={getInputClassName()} type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
+            <input type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
           </label>
         </form>
       </div>
@@ -121,8 +129,8 @@ function GameBoard({
 
 GameBoard.propTypes = {
   firstUrlParam: PropTypes.string,
-  getInputClassName: PropTypes.string,
   handleWin: PropTypes.func,
+  inputError: PropTypes.bool,
   product: PropTypes.object,
   questionMatchOne: PropTypes.bool,
   questionMatchThree: PropTypes.bool,

@@ -2,10 +2,6 @@
   z-index: 3;
 }
 
-.input-error {
-  border: 2px red solid;
-}
-
 .show-form {
   display: block;
 }
