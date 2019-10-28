@@ -59,7 +59,7 @@ function BackgroundVideo({
   );
 }
 
-BackgroundVideo.prototypes = {
+BackgroundVideo.propTypes = {
   fail: PropTypes.bool,
   gameBoard: PropTypes.bool,
   intro: PropTypes.bool,
