@@ -16,6 +16,7 @@ const FormInput = ({ handleSubmit, inputRef, paramNumber, urlParam, updateUrlFun
 );
 
 export default FormInput;
+
 FormInput.propTypes = {
   handleSubmit: PropTypes.func,
   inputRef: PropTypes.object,

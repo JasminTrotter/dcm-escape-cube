@@ -95,7 +95,11 @@ function GameBoard({
         secondUrlParam={secondUrlParam}
         thirdUrlParam={thirdUrlParam}
       />
-      <Window>
+      <Window
+        style={{
+          width: 660
+        }}
+      >
         <GameBoardHeader />
         <WindowContent className={!questionMatchOne ? 'show-form' : 'hide-form'}>
           <h1>1. {product.hint1}</h1>
