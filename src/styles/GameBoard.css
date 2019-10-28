@@ -1,3 +1,11 @@
-.input-error {
-  border: 2px red solid;
+.game-board {
+  z-index: 3;
+}
+
+.show-form {
+  display: block;
+}
+
+.hide-form {
+  display: none
 }
