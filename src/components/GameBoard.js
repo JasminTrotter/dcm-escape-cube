@@ -66,7 +66,6 @@ function GameBoard({
       }
     }
 
-
     if (param === 'param3') {
       if (thirdAnswer === product.marketingPartner) {
         updateQuestionMatchThree(true);
@@ -76,7 +75,6 @@ function GameBoard({
         updateInputError(true);
       }
     }
-
   }
 
   return (
@@ -89,7 +87,6 @@ function GameBoard({
         secondUrlParam={secondUrlParam}
         thirdUrlParam={thirdUrlParam}
       />
-
       <div className={!questionMatchOne ? 'show-form' : 'hide-form'}>
         <h1>1. {product.hint1}</h1>
         <h3>(answer: {product.name})</h3>

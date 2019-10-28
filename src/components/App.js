@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { themes } from "react95";
 import { productList } from '../productList';
+import Audio from './Audio';
 import BackgroundVideo from './BackgroundVideo';
 import BottomNav from './BottomNav';
 import ErrorBox from './ErrorBox';
@@ -30,8 +31,8 @@ function App() {
   const [success, updateSuccessStatus] = useState(false);
   const [thirdUrlParam, updateThirdUrlParam] = useState('');
 
-  // t.setSeconds(t.getSeconds() + 299.5); // 5 min
-  t.setSeconds(t.getSeconds() + 180); // 3 min
+  t.setSeconds(t.getSeconds() + 299.5); // 5 min
+  // t.setSeconds(t.getSeconds() + 180); // 3 min
   // t.setSeconds(t.getSeconds() + 3); // 3 sec
 
   function handleFail() {
@@ -81,6 +82,13 @@ function App() {
             success={success}
           />
         </div>
+        <Audio
+          fail={fail}
+          gameBoard={gameBoard}
+          intro={intro}
+          startGame={startGame}
+          success={success}
+        />
         <div className='game'>
           {inputError && <ErrorBox inputError={inputError} />}
           <BottomNav
