@@ -1,9 +1,12 @@
 .game-board {
   z-index: 3;
+  width: 660px;
 }
 
 .show-form {
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 
 .hide-form {

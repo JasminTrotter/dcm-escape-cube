@@ -1,6 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import {
+  Window,
+  WindowContent
+} from 'react95';
 import Url from './Url';
+import FormInput from './FormInput';
+import GameBoardHeader from './GameBoardHeader';
 import '../styles/GameBoard.css';
 
 function GameBoard({
@@ -89,43 +95,42 @@ function GameBoard({
         secondUrlParam={secondUrlParam}
         thirdUrlParam={thirdUrlParam}
       />
-
-      <div className={!questionMatchOne ? 'show-form' : 'hide-form'}>
-        <h1>1. {product.hint1}</h1>
-        <h3>(answer: {product.name})</h3>
-        <form className='show-form' onSubmit={event => {
-          handleSubmit('param1')
-          event.preventDefault();
-        }}>
-          <label>
-            <input type='text' ref={firstInput} value={firstUrlParam} onChange={event => updateFirstUrlParam(event.target.value)} />
-          </label>
-        </form>
-      </div>
-      <div className={(questionMatchOne && !questionMatchTwo) ? 'show-form' : 'hide-form'}>
-        <h1>2. {product.hint2}</h1>
-        <h3>(answer: {product.random})</h3>
-        <form onSubmit={event => {
-          handleSubmit('param2')
-          event.preventDefault();
-        }}>
-          <label>
-            <input type='text' ref={secondInput} value={secondUrlParam} onChange={event => updateSecondUrlParam(event.target.value)} />
-          </label>
-        </form>
-      </div>
-      <div className={questionMatchTwo ? 'show-form' : 'hide-form'}>
-        <h1>3. {product.hint3}</h1>
-        <h3>(answer: {product.marketingPartner})</h3>
-        <form className='show-form' onSubmit={event => {
-          handleSubmit('param3')
-          event.preventDefault();
-        }}>
-          <label>
-            <input type='text' ref={thirdInput} value={thirdUrlParam} onChange={event => updateThirdUrlParam(event.target.value)} />
-          </label>
-        </form>
-      </div>
+      <Window>
+        <GameBoardHeader />
+        <WindowContent className={!questionMatchOne ? 'show-form' : 'hide-form'}>
+          <h1>1. {product.hint1}</h1>
+          <h3>(answer: {product.name})</h3>
+          <FormInput
+            paramNumber={1}
+            handleSubmit={handleSubmit}
+            inputRef={firstInput}
+            urlParam={firstUrlParam}
+            updateUrlFunction={updateFirstUrlParam}
+          />
+        </WindowContent>
+        <WindowContent className={(questionMatchOne && !questionMatchTwo) ? 'show-form' : 'hide-form'}>
+          <h1>2. {product.hint2}</h1>
+          <h3>(answer: {product.random})</h3>
+          <FormInput
+            paramNumber={2}
+            handleSubmit={handleSubmit}
+            inputRef={secondInput}
+            urlParam={secondUrlParam}
+            updateUrlFunction={updateSecondUrlParam}
+          />
+        </WindowContent>
+        <WindowContent className={questionMatchTwo ? 'show-form' : 'hide-form'}>
+          <h1>3. {product.hint3}</h1>
+          <h3>(answer: {product.marketingPartner})</h3>
+          <FormInput
+            paramNumber={3}
+            handleSubmit={handleSubmit}
+            inputRef={thirdInput}
+            urlParam={thirdUrlParam}
+            updateUrlFunction={updateThirdUrlParam}
+          />
+        </WindowContent>
+      </Window>
     </div>
   );
 }
