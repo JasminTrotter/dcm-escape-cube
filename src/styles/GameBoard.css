@@ -1,5 +1,7 @@
 .game-board {
   z-index: 3;
+  position: relative;
+  top: -111px;
 }
 
 .game-board h1 {

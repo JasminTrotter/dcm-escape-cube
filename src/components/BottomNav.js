@@ -4,6 +4,7 @@ import Logo from './Logo';
 import Timer from './Timer';
 import { AppBar, Button, Toolbar } from "react95";
 import * as image from '../img/react95Logo.png';
+import '../styles/BottomNav.css'
 
 function BottomNav({
   expiryTimestamp,
@@ -31,7 +32,8 @@ function BottomNav({
       <Toolbar
         style={{
           display: 'flex',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          height: '6vh'
         }}
       >
         {startGame && <Button style={{ fontWeight: 'bold' }} onClick={handleStartIntro}>
@@ -86,11 +88,13 @@ function BottomNav({
               />
               Hint 3
             </Button>}
-            <Logo
-              bottomColor={'#ffffff'}
-              size={100}
-              topColor={'#000000'}
-            />
+            <div className="bottom-nav-logo">
+              <Logo
+                bottomColor={'#ffffff'}
+                size={100}
+                topColor={'#000000'}
+              />
+            </div>
             <Timer
               expiryTimestamp={expiryTimestamp}
               handleFail={handleFail}
