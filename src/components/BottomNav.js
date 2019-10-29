@@ -33,7 +33,7 @@ function BottomNav({
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          height: '4vh'
+          height: '6vh'
         }}
       >
         {startGame && <Button style={{ fontWeight: 'bold' }} onClick={handleStartIntro}>

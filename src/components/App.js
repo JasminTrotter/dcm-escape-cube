@@ -31,9 +31,12 @@ function App() {
   const [success, updateSuccessStatus] = useState(false);
   const [thirdUrlParam, updateThirdUrlParam] = useState('');
 
+  console.log('name', newProduct.name);
+  console.log('marketer', newProduct.marketingPartner);
+
   t.setSeconds(t.getSeconds() + 299.5); // 5 min
   // t.setSeconds(t.getSeconds() + 180); // 3 min
-  // t.setSeconds(t.getSeconds() + 3); // 3 sec
+  // t.setSeconds(t.getSeconds() + 10); // 3 sec
 
   function handleFail() {
     updateGameStatus(false);
@@ -44,9 +47,9 @@ function App() {
     updateFailStatus(false);
     updateFirstUrlParam('');
     updateProduct(newProduct);
-    updateQuestionMatchOne(false)
-    updateQuestionMatchThree(false)
-    updateQuestionMatchTwo(false)
+    updateQuestionMatchOne(false);
+    updateQuestionMatchThree(false);
+    updateQuestionMatchTwo(false);
     updateSecondUrlParam('');
     updateStartStatus(true);
     updateSuccessStatus(false);

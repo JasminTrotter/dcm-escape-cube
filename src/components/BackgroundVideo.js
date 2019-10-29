@@ -35,12 +35,12 @@ function BackgroundVideo({
           <source src={thirdStage} type="video/mp4" />
         </video>
       }
-      {(gameBoard && questionMatchOne && !questionMatchTwo) &&
+      {(gameBoard && questionMatchTwo) &&
         <video className="video" loop autoPlay muted>
           <source src={firstStage} type="video/mp4" />
         </video>
       }
-      {(gameBoard && questionMatchTwo) &&
+      {(gameBoard && questionMatchOne && !questionMatchTwo) &&
         <video className="video" loop autoPlay muted>
           <source src={secondStage} type="video/mp4" />
         </video>
