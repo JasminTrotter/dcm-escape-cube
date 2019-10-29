@@ -90,7 +90,8 @@ function App() {
           success={success}
         />
         <div className='game'>
-          {inputError && <ErrorBox inputError={inputError} />}
+          {inputError && <ErrorBox />}
+          {/* {inputError && <ErrorBox />} */}
           <BottomNav
             expiryTimestamp={t}
             fail={fail}
