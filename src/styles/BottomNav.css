@@ -1,0 +1,5 @@
+.bottom-nav-logo {
+  bottom: -2px;
+  position: relative;
+  transform: rotate(14deg);
+}
