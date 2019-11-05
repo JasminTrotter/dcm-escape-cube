@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Escape from DCM
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+`Escape from DCM` is the UI for an escape room for Data Capture Digital Marketing squad's 2019 Just Boo It Day demo.
 
-### `yarn start`
+<hr>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Game Intro
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Our focus room has been transformed into a user's browser. In order to enter, you must accept the Dutch privacy modal. Once inside, you'll find that your team is trapped in a marketing tag. Escaping the room requires that you correctly assemble the query string so that the tag can be fired, transmitting valuable consumer information to our marketing partner(s).
 
-### `yarn test`
+You have 5 minutes to escape!
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<hr>
 
-### `yarn build`
+## Context
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As the Data Capture Digital Marketing team at Nike, we provide DCM.js, a client-side digital marketing library for Nike web experiences.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Marketing Tags
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - DCM.js delivers consumer data to Nike's marketing partners via `marketing tags`. If a vendor's marketing tag qualifies in the user's country, and the user allows tracking, the tag will "fire" and execute logic on specific events (such as page viewed, product added to cart, order confirmation, etc).
 
-### `yarn eject`
+### Marketing Pixel
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- When a `marketing pixel` fires, it makes a request to an image pixel's URL endpoint (contained in the img element's src attribute). The logic of a marketing tag executes to fill in values for each of the marketing pixel's URL parameters.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### URL Parameters
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- URL parameters (or `params`), are values that compose the query string of a URL. These values are set by the marketing tag, and each param conatins a piece of data to be sent to the marketing partner.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<hr>
 
-## Learn More
+## Setup Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+From the command line, run the following
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- git clone https://github.com/JasminTrotter/dcm-escape-cube.git
+- cd dcm-escape-cube
+- yarn install
+- yarn start
 
-### Code Splitting
+## Dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[Create-React-App](https://github.com/facebook/create-react-app): framework with preconfigured tools like Webpack and Babel.
 
-### Analyzing the Bundle Size
+[React95](https://github.com/React95/React95): a component library inspired by the Windows 95 UI design.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+[React-Spring](https://www.react-spring.io): spring animation library for our pop-up error screen.
 
-### Making a Progressive Web App
+[React-Timer-Hook](https://www.npmjs.com/package/react-timer-hook): a react hook that handles our stopwatch game timer.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[Styled-Components](https://www.styled-components.com): comes with ThemeProvider wrapper to injects React95 theme styling.
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Pull Requests are welcome! Please make your code changes on a separate branch and run npm run test before your commit.
